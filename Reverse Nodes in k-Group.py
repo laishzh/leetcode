@@ -26,13 +26,25 @@ class Solution:
         p = newlist
         while (head != None):
             curhead = head
+            curtail = head
             i = 1
-            while (head.next != None and i < k):
+            head = head.next
+            while (head != None and i < k):
+                #print("Head")
+                #print(head.val)
+                curtail = head
                 head = head.next
                 i += 1
+            curtail.next = None
+            #print("Cur")
+            #print(curhead.val)
+            #print(curtail.val)
+            #print("***")
 
             if i == k:
                 (curhead, curtail) = self.reverseNodes(curhead)
+                #print("Curhead")
+                #print(curhead.val)
             p.next = curhead
             if i == k:
                 p = curtail
@@ -51,7 +63,6 @@ class Solution:
             q.next = p
             p = q
         head = p
-        printlist(head)
         return (head, tail)
 
 solution = Solution()
@@ -64,5 +75,6 @@ for i in reversed(range(1, 6)):
     lists.append(node)
 head = lists[-1]
 
-printlist( solution.reverseKGroup(head, 2) )
-printlist( solution.reverseKGroup(head, 3) )
+printlist( solution.reverseKGroup(head, 4) )
+
+#0 minutes ago 	Accepted 	400 ms 	python
